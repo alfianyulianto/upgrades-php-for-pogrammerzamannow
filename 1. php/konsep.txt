@@ -1,0 +1,530 @@
+--TIPE DATA NUMBER--
+_> Di PHP ada 2 jenis tipe data number 
+  * (int) Bilangan bulat decimal (base 10), hexadecimal (base 16), octa (base 8), binary (base 2) dan 
+  * (float) Bilangan pecahan
+_> Di PHP kita bisa menambahkan _(garis bawah) di angka, ini hanya untuk agar mudah di baca, saat dijalankan, _(garis bawah) tersebut akan di ignore (diabaikan)
+_> Untuk angka negatif, kita bisa gunakan - (minus) di depan angka
+_> Integer Overflow 
+    * Secara default, kapasitas integer di PHP ada batasnya, 2147483647 untuk sistem operasi 32 bit, dan 9223372036854775807 untuk sistem operasi 64 bit
+    * Jika kita membuat number integer yang melebihi nilai tersebut, maka secara otomatis tipe numbernya akan berubah menjadi floating point
+
+
+--TIPE DATA BOOLEAN--
+_>Tipe data boolean adalah tipe data paling sederhana di PHP
+_>Tipe data boolean adalah tipe data dengan nilai kebenaran (benar atau salah)
+_> Nila benar direpresentasikan dengan true (case insensitif / kita bisa menulisnya dengan huru besar kecil atau kecil semua atau besar semua)
+_> Nila salah direpresentasikan dengan false (case insensitif / kita bisa menulisnya dengan huru besar kecil atau kecil semua atau besar semua)
+
+
+--TIPE DATA STRING--
+_> Tipe data string adalah tipe data representasi dari teks
+_> String bisa mengandung kosong atau banyak karakter
+_> Banyak cara untuk membuat string di PHP
+    * Single Quote ('')
+    * Double Quote ("") : Salah satu kelebihannya kita bisa menggunakan escape sequence untuk bebrapa hal, seperti \n untuk ENTER, \t untuk TAB, \"untuk double quote, dan lain-lain
+    * Multiline String 
+      ^ Kadang kita ingin membuat data string yang lebih dari satu baris. Untuk melakukan itu sebenarnya kita bisa menggunakan \n sebagai ENTER
+      ^ Namun PHP memiliki fitur yang lebih baik, yaitu bernama Heredoc dan Nowdoc
+      ^ Heredoc adalah fitur untuk membuat String yang panjang, sehingga kita tidak perlu manual melakukan enter, tab dan yang lain-lain secara manual
+      ^ Nowdoc mirip seperti Heredoc, yang membedakan adalah pada Nowdoc tidak memiliki kemampuan parsing seperti di Heredoc atau Double Quote.
+
+
+--VARIABLE--
+_> Variable adalah tempat untuk menyimpan data sehingga bisa kita gunakan lagi di kode program selanjutnya
+_> Di PHP variable bisa menampung berbaai jenis tipe data dan bisa berubah-ubah tipe data
+_> Untuk membuat variable kita bisa menggunakan tanda $ (dolan) diikuti dengan nama variablenya
+_> Penamaan variable tidak boleh mengandung spasi
+_> Variable Variables adalah sebuah fitur dari PHP untuk membuat sebuah variable dari value string variable lain. Untuk membuatnya kita gunakan tanda $$
+
+
+--CONSTANT--
+_> Variable di PHP sifatnya mutuable, artinya bisa di rubah
+_> Jika kita ingin membuat variable yang immutable (tidak bisa dirubah), maka tidak bisa kita lakukan di PHP
+_> Sebagai gantinya, terdapat fitur yang namanya CONSTANT
+_> Constant adalah tempat untuk menyimpan data yang tidak bisa dirubah lagi setelah di deklarasikan
+_> Untuk membuat constant kita bisa menggunakan function define() atau keyword const
+_> Best practice pembuatan nama constant adalah menggunakan UPPER_CASE  
+
+-- DATA NULL--
+_> Nilai NULL merepresentasikan sebuah variable tanpa nilai
+_> Saat kita membuat variable, lalu ingin menghapus data yang terdapat di variable tersebut, kita bisa menggunakan NULL untuk mengosongkan variable tersebut
+_> Untuk membuat data NULL, kita bisa menggunakan kata kunci NULL (case insensitif / kita bisa menulisnya dengan huru besar kecil atau kecil semua atau besar semua)
+_> Mengecek apakah data NULL
+    * Kadang kita ingin tahu apakah sebuah data bernilai NULL atau tidak
+    * Untuk mengecek apakah sebuah data bernialai NULL, kita bisa menggunakan function is_null($variable);
+    * Function is_null($variable) akan menghasilkan sebuah boolean
+_> Menghapus Variable
+    * Kita bisa menghapus sebuah variable, caranya dengan menggunakan function unset($variable)
+    * Ketika kita sudah menghapus variable, kita tidak bisa lagi mengakses variable tersebut, bahkan function is_null($variable) pun akan menjadi error jika mengakses variable tersebut
+    * Agar lebih aman, ita bisa menggunakan function isset($variable) untuk mengecek apakah sebuah variable ada dan nilanya tidak NULL
+  
+
+--TIPE DATA ARRAY--
+_> Array adalah tipe data yang berisikan kosong atau banyak data
+_> Array di PHP bisa berisikan data dengan jenis berbeda-berbeda
+_> Array di PHP memiliki panjang dinamis, artinya kita bisa menambahan data ke Array sebanyak-banyaknya, tidak dibatasi kapasitasnya
+_> Operasi Array
+    | Operasi                  | Keterangan                                                                |
+    -------------------------------------------------------------------------------------------------------
+    | $array[index]            | Mengakses data di array pada nomor index                                  |
+    | $array[index] = value    | Mengubah data di array pada nomor index dengan value baru                 |
+    | $array[] = value         | Menambah data di array pada posisi paling belakang                        |
+    | unset($array[index])     | Menghapus data di array, index otomatis hilang dari array                 |
+    | count($array)            | Mengabil total data di array                                              |
+    -------------------------------------------------------------------------------------------------------
+_> Array Sebagai Map
+    * Map yaitu asosiasi antara key dan value
+    * Secara default Array menggunakan index (number) sebagai key dan value nya kita bisa bebas memasukan data ke dalam Array
+    * Namun jika kita ingin mengubah index nya tidak harus menggunakan number, bisa gunakan tipe data lain, seperti string misal nya
+_> Karena array dapat berisi data apapun kita juga bisa membuat array di dalam array
+
+
+--OPERATOR ARITMATIKA--
+| OPERATOR                  | Keterangan                            |
+---------------------------------------------------------------------
+| +$variable                | Positif                               |
+| -$variable                | Negatif                               |
+| $variable + $variable     | Penambahan                            |
+| $variable - $variable     | Pengurangan                           |
+| $variable * $variable     | Perkalian                             |
+| $variable / $variable     | Pembagian                             |
+| $variable % $variable     | Sisa bagi                             |
+| $variable ** $variable    | Pangkat                               |
+---------------------------------------------------------------------
+
+
+--OPERATOR PENUGASAN--
+_> Operator penugasan sama dengan menggunakan karakter = (sama dengan)
+_> Operator penugasan sudah serign kita gunakan, terutama ketika mengubah value sebuah variable
+_> Namun selain hal itu, operator penugasan juga bisa digunakan untuk perasi ARITMATIKA
+_> Operator Penugasan ARITMATIKA
+    | Penugasan                  | Keterangan                            |
+    ---------------------------------------------------------------------
+    | $a += $b                   | $a = $a + $b                          |
+    | $a -= $b                   | $a = $a - $b                          |
+    | $a *= $b                   | $a = $a * $b                          |
+    | $a /= $b                   | $a = $a / $b                          |
+    | $a %= $b                   | $a = $a % $b                          |
+    ---------------------------------------------------------------------
+
+
+--OPERATOR PERBANDINGAN--
+_> Operator perbandingan digunakan untuk membandingkan dua buah value
+_ Operator ini menghasilkan sebuah boolean, true jika perbandingannya benar, false jika perbandingannya salah
+_> Operator perbandingan
+    | Operator    | Nama            | Keterangan                                                                 |
+    -------------------------------------------------------------------------------------------------------------
+    | $a == $b    | Sama dengan     | true jika $a sama dengan $b setelah di lakukan konversi tipe data          |
+    | $a === $b   | Identik         | true jika $a sama dengan $b dan memiliki tipe data yang sama               |
+    | $a != $b    | Tdk sama dengan | true jika $a tidak sama dengan $b setelah dilakukan konversi tipe data     |
+    | $a <> $b    | Tdk sama dengan | true jika $a tidak sama dengan $b setelah dilakukan konversi tipe data     |
+    | $a !== $b   | Tdk identika    | true jika $a tidak sama dengan $b atau tidak sama tipe data                |
+    | $a < $b     | Kurang dari     | true jika $a kurang dari $b                                                |
+    | $a <= $b    | Kurang dari =   | true jika $a kurang dari atau sama dengan $b                               |
+    | $a > $b     | Lebih dari      | true jika $a lebih dari $b                                                 |
+    | $a >= $b    | Lebih dari =    | true jika $a lebih dari atau sama dengan $b                                |
+    -------------------------------------------------------------------------------------------------------------
+
+
+--OPERATOR LOGIKA--
+_> Operator logika adalah operator untuk membandingkan dua nilai boolean
+_> Hasil dari operator logika adalah boolean 
+_> Operator logika
+    | Operator    | Nama      | Hasil                                                       |
+    -----------------------------------------------------------------------------------------
+    | $a && $b    | And       | true jika $a dan $b keduanya true                           |
+    | $a and $b   | And       | true jika $a dan $b keduanya true                           |
+    | $a || $b    | Or        | true jika $a dan $b salah satu atau keduanya true           |
+    | $a Or $b    | Or        | true jika $a dan $b salah satu atau keduanya true           |
+    | !$a         | Not       | true jika $a bernilai false                                 |
+    | $a xor $b   | Xor       | true jika $a dan $b salah satu true, tidak keduanya         |
+    -----------------------------------------------------------------------------------------
+
+
+--INCREMENT DAN DECREMENT--
+_> Increment dan Decrement digunakan untuk menaikan dan menurunkan data number sejumlah 1 angka
+_> Ini bisa mempersingkat kita untuk menaikan data
+_> Operator Increment dan Decrement
+    | Contoh      | Name             | Efek                                                  |
+    ------------------------------------------------------------------------------------------
+    | $a++        | Post increment   | Kembalikan $a lalu naikan 1 angka                     |
+    | ++$a        | Pre increment    | Naikan $a satu angka, lalu kembalikan $a              |
+    | $a--        | Post increment   | Kembalikan $a lalu turunkan 1 angka                   |
+    | --$a        | Pre increment    | Turunkan $a satu angka, lalu kembalikan $a            |
+    ------------------------------------------------------------------------------------------
+
+
+--OPERATOR ARRAY--
+| Contoh        | Nama          | Keterangan                                                        |
+-----------------------------------------------------------------------------------------------------
+| $a + $b       | Union         | Menggabungkan array $a dan $b                                     |
+| $a == $b      | Equality      | true jika $a dan $b memiliki key-value sama                       |
+| $a === $b     | Identity      | true jika $a dan $b memiliki key-value sama dan posisi sama       |
+| $a != $b      | Inequality    | true jika $a dan $b tidak sama                                    |
+| $a <> $b      | Inequality    | true jika $a dan $b tidak sama                                    |
+| $a !== $b     | Nonidentity   | true jika $a dan $b tidak identik                                 |
+-----------------------------------------------------------------------------------------------------
+
+
+--EXPRESSION, STATEMENT DAN BLOCK
+_> Expression adalah bagian terpenting di PHP
+_> Di PHP, hampir semua kode yang kita tulis adalah sebuah Expression
+_> Secara sederhana, expression adalah apapun yang memiliki nilai atau value
+_> Contoh Expression Sederhana
+    * $a = 5;
+    * $b = $a;
+    * $a = 5; Ketika kita menuliskan "5", maka tentu itu adalah nilai, oleh karena itu 5 tersebut adalah expression
+    * Lalu kita menulis kode $b = $a; $a bisa kita bilang adalah expression, karena $a adalah nilai 5
+_> Contoh Expression Complex
+    function getValue(){
+      return 100;
+    };
+
+    $value = getValue();
+    * getValue() adalah expression, karena getValue() bernilai angka 100
+
+_> Statement adalah kalimat lengkap dalam bahasa
+_> Sebuah statement berisikan execution komplit, biasanya diakhiri dengan titik koma
+_> Contoh Statement
+    $name = "Alfian Yulianto";
+    echo $name;
+    $date = new DateTime();
+
+_> Block adalah kumpulan statement yang terdiri dari nol atau lebih statement
+_> Block diawali dan diakhiri dengan kurung kurawal {}
+_> Contoh Block
+    function runApp($name) 
+    {
+      echo "Start Program" . PHP_EOL;
+      echo "Hello $name" . PHP_EOL;
+      echo "End Program" . PHP_EOL;
+    }
+
+
+--MANIPULASI STRING--
+_> Dot (titik) operator adalah operator yang digunakan untuk mnambahkan string dengan data lain (bisa string atau tipe data lain)
+_> Konversi ke Number dan Sebaliknya
+    * Kadang kita ingin melakukan konversi tipe data string ke number (int / float) atau sebaliknya
+    * Di PHP untuk melakukan konversi cukup mudah, kita hanya perlu menggunakan tanda kurung (tipe data)
+    * Tipe data untuk string adalah string, untuk number bisa menggunakan int untuk integer dan float untuk floating point
+_> Mengakses Karakter di String
+    * String PHP seperti array karakter, dimana kita bisa mengakses data tiap karakternya menggunakan kurung siku
+    * Sama seperti di array, index pertama dimulai dari 0
+    * Jika kita mengakses index melebihi karakter di string, maka akan terjadi error
+_> Variable parsing
+    * Khusus string menggunakan double quote atau heredoc, kita bisa menggunakan karakter $ untuk mengakses variable
+    * Ini memudahkan kita untuk menggabungkan string dengan variable
+    * Cara penggunaannya adalah dengan menggunakan karakter $ lalu diikuti dengan nama variablenya
+_> Curly Brace
+    * Kadang kita butuh menggabungkan variable dengan string tanpa ada spaasi. Hal in akan menyuliskan jika hanya menggunakan variable parsing
+    * Untungya di PHP kita bisa menggunakan kurung kurawal {} sebelum menggunakan variable parsing
+
+
+--IF STATEMENT--
+_> if adalah salah satu kunci yang digunakan untuk percabangan
+_> Percabangan artinya kita bisa menaksekusi kode program tertentu ketika suatu kondisi terpenuhi
+_> Sytax If Statement
+    if(expression) statement;
+
+    if(expression) {
+      statement1;
+      statement2;
+    }
+_> Else Statement
+    * Blok if akan dieksekusi ketika kondisi if bernilai true
+    * Kadang kita ingin melakukan eksekusi program tertentu jika kondisi if bernilai false
+    * Hal ini bisa dilakukan menggunakan else statement
+_> Sytax Else Statement
+    if(expression) 
+      statement;
+    else 
+      statement;
+
+    if(expression) {
+      statement1;
+      statement2
+    } else {
+      statement;
+    }
+_> Else If Statement
+    * Kadang dalam if, kit butuh membuat beberapa kondisi
+    * Kasus seperti ini, di PHP kita bisa menggunakan Else If Statement
+    * Else if di PHP bisa lebih dari satu
+    * Kode Else if di php bisa menggunakan "else if" atau "elseif" (digabung)
+_> Sytax Else If Statement
+    if(expression)
+      statement;
+    elseif(expression)
+      statement;
+    else 
+      statement;
+    
+    if(expression) {
+      statement1;
+      statement2;
+    } else if(expression) {
+      statement;
+    } else {
+      statement;
+    }
+_> Sytax Alternatif
+    * Selain menggunakan {} (kurung kurawal), PHP juga menyediakan sytax alternatif untuk menggunakan if, yaitu dengan menggunakan : (titik dua)
+    * Namun untuk menggabungkan ini, kita harus menggunakan kata kunci endif di akhir if statement
+
+
+--SWITCH STATEMENT--
+_> Switch adalah statement percabangan yang sama dengan if, namun lebih sederhana caara pembuatannya
+_> Kondisi di switch statement hanya untuk perbandingan ==
+_> Sytax Alternatif
+    * Sama seperti if statement, switch statement juga bisa tanpa menggunakan {} (kurung kurawal)
+    * Namun diakhir switch statement, kita harus menambahkan kata kunci endswitch
+
+
+--TERNARY OPERATOR--
+_> Ternary operator digunakan untuk mempersingkat penulisan pada sebuah if statement
+_> Ternary operator menggunakan kata kunci ? dan :
+
+
+--NULL COALESCING OPERATOR--
+_> Sebelumnya kita tahu bahwa data kosong direpresentasikan dengan data NULL di PHP
+_> Dan hal yang paling repot di PHP adalah mengecek apakah sebuah data ada atau tidak, dan juga apakah data tersebut isinya null atau bukan
+_> Biasanya untuk melakukan itu, kita perlu menggunakan pengecekan if statement dengan function isset($variable)
+_> Namun untungnya di PHP ada null coalescing operator menggunakan tanda ??
+
+
+--FOR LOOP--
+_> For adalah salah satu kata kunci yang bisa digunakan untuk melakukan perulangan
+_> Blok kode yang terdapat di dalam for akan selalu diulang selama kondisi for terpenuhi
+_> Sytax Perulangan For
+    for(init statement; kondisi; post statement){
+      // blok perulangan
+    }
+    * Init statement akan dieksekusi hanya sekali di awal sebelum perulangan
+    * Kondisi akan dilakukan pengecekan dalam setiap perulangan, jika true perulangan akan dilakukan, jika false perulangan akan berhenti
+    * Post statement akan dieksekusi setiap kali diakhiri perulangan
+    * Init statement, Kondisi dan Post Statement tidak wajib diisi, jika Kondisi tidak diisi, berarti Kondisi selalu bernilai true
+_> Sytax Alternatif 
+    for(init statement, kondisi, post statement) :
+      statement;
+    endfor;
+
+
+--WHILE LOOP--
+_> While loop adalah versi perulangan yang lebih sederhana dibandingkan for loop
+_> Di while loop, hanya terdapat kondisi perulangan, tanpa ada init statement dan post statement
+_> Sytax Alternatif 
+    init statement;
+    while(expression) :
+      statement;
+    endwhile;
+
+
+--DO WHILE LOOP--
+_> DO While Loop adalah perulangan yang mirip dengan while
+_> Perbedaanya hanya pada pengecekan kondisi
+_> Pengecekan kondisi di whle loop dilakukan di awal sebelum perulangan dilakukan, sedangan di do while loop dilakukan setelah perulangan dilakukan
+_> Oleh karena itu, do while loop pasti sekali perullangan dilakukan walaupun kondisi tidak berniali true
+
+
+--BREAK DAN CONTINUE
+_> Pada switch statement, kita sudah mengenal kata kunci break, yaitu menghentikan cas dalam switch
+_> Sama dengan pada perulangan, break juga digunakan untuk menghentikan seluruh perulangan
+_> Continue digunakan untuk menghentikan perulangan saat ini, lalu menlanjutkan ke perulangan selanjutnya
+
+
+--FOR EACH LOOP--
+_> Terkadang ketika kita mengakses sebuah array maka kita menggunakan sebuah for loop, hal ini membuat sebuah perulangan sangat bertele-tele, karena kita harus membuat counter lalu mengakses array dengan menggunakan counter yang kita buat
+_> For each digunakan untuk mengakses data Array secara otomatis
+
+
+--GOTO OPERATOR--
+_> Goto Operator adalah salah satu fitur PHP yang jarang digunakan, alsannya jika terlalu banyak menggunakan goto operator kode program aplikasi akan mudah membingungkan pada saat membaca kode
+_> Goto adalah fitur dimanakita bisa loncat ke kode program sesusai dengan keinginan kita
+_> Agar goto bisa loncat ke kode program, kita harus membuat label di php dengan menggunakan nama label lalu diakhiri : (colon)
+
+
+--FUNCTION--
+_> Function adalah block kode program yang akan berjalan saat di panggil
+_> Untuk membuat function di PHP, kita menggunakan kata kunci function, lalu diikuti dengan nama function, kurung () dan diakhiri dengan block
+_> Untuk memanggilnya kita bisa menggunakan nama function diikuti dengan tanda kurung ()
+_> Lokasi Function
+    * PHP sangat flexsible dalam pembuatan function
+    * Di PHP membuat function dimanapun, bisa di dalam if statement, di dalam function dan sebagainya
+    * Perlu diingat jika kode function yang belum dieksekusi oleh PHP, maka function tersebut tidak akan bisa digunakan
+
+
+--FUNCTION ARGUMENT--
+_> Kita bisa mengirim informasi ke function yang ingin kita panggil
+_> Untuk melakukan hal tersebut, kita perlu menambahkan argument atau parameter di function yang sudah kita buat
+_> Argument di tempatkan di dalam kurung () di deklarasi function
+_> Argument bisa lebih dari satu, jika lebih dari satu harus di pisah dengan tanda koma
+_> Default Argument value
+    * PHP mendukung default argument value
+    * Fitur ini memungkinkan saat kita memanggi function tanpa perlu memasukan sebuah parameter, kita bisa menentukan data defaultnya apa
+_> Type Declaration
+    * Sama seperti variable , argument di PHP bisa kita masukkan data yang dinamis
+    * Kadang terlalu dinamsi juga menyulitkan jika ternyata kita hanya ingin membuat function yang menggunakan argument dengan tipe data tertentu
+    * Untungnya di PHP, kita bisa menambahkan type data di argument, sehingga PHP akan melakkan pengecekan ketika kita mengirimkan value ke function tersebut
+    * Jika tipe data value tidak sesuai, maka akan terjadi error
+    * Secara default PHP akan melakukan percobaan konversi tipe data secara otomatis, misal jika kita menggunakan tipe int, tapi kita menirim string, maka PHP aka otomatis mengkonversi string tersebut menjadi int
+    * Valid Types
+    | Type                | Keterangan                                                           |
+    ----------------------------------------------------------------------------------------------
+    | Class / Interface   | Parameter harus tipe Class / Interface                               |
+    | self                | Paremeter harus sama dengan Class diaman function ini dibuat         |
+    | array               | Parameter harus array                                                |
+    | callable            | Parameter harus callable                                             |
+    | boolean             | Parameter harus boolean                                              |
+    | float               | Parameter harus floating point                                       |
+    | int                 | Parameter harus int                                                  |
+    | string              | Parameter harus string                                               |
+    | iterable            | Parameter harus array atau tipe Traversable                          |
+    | object              | Parameter harus object                                               |
+    ----------------------------------------------------------------------------------------------
+_> variable-length Argument List
+    * Variable-length argument list merupakan kemampuan diamana kita membuat sebuah parameter yang menerima banyak value
+    * Variable-length argument list secara otomatis akan membuat argument tersebut menjadi array,
+    namun kita tidak perlu meenaul mengirim array ke functionnya
+    * Variable-length argument list hanya bisa dilakukan di argument posisi terakhir
+    * Untuk membuat variable-length argument list, kita bisa menggunakan tanda ... (titik tiga kali) sebelum nama argument
+
+
+--FUNCTION RETURN VALUE--
+_> Secara default function tidak mengembalikan nilai apapun, namun jika kita ingin, kita bisa membuat sebuah function mengembalikan nilai
+_> Untuk sebuah function dapat mengembalikan sebuah nilai maka kita bisa menggunakan kata kunci return di dalam block function di ikuti dengan data yang ingin dihasilkan
+_> Kita hanya bisa menghasilkan 1 data di sebuah function, tidak bisa lebih dari satu
+_> Return Type Declaration
+    * Sama seperti pada argument, pada return value pun kita bisa mendeklarasikan tipe datanya
+    * Hal ini selain mempermudah kita ketika membaca tipe data kembalian function, bisa juga digunakan untuk menjaga jangan sampai kita mengembalikan tipe data yang salah di function
+    * Untuk mendeklarasikan tipe data kembalian function, setelah kurung () kita bisa tambahkan : diikuti tipe data kembaliannya
+
+
+--VARIABLE FUNCTION--
+_> Variable function adalah kemampuan memanggil sebuah function dari value yang terdaoat di sebuah variable
+_> Untuk menggunakan variable function, kita bisa secara langsung memanggil $namaVariable(), jika ingin menambahkan argument, kita bisa menggunakan $namaVariable(argument)
+
+
+--ANONYMOUS FUNCTION--
+_> Anonymous function adalah function tanpa nama, di PHP di sebuah juga dengan Closure
+_> Anonymous function biasanya sebagai argument atau sebagai value di variable
+_> Anonymous membuat kita bisa mengirimkan function sebagai argument di function lainnya
+_> Mengakses Variable di Luar Closure / Anonymouse Function
+    * Secara default, anonymouse function tidak bisa mengakses variable yang terdapat diluar function
+    * Jika kita ingin menggunakan variable yang terdapat di luar anonyomouse function, kita perlu secara explicit menyebutkan menggunakan kata kunci use lalu diikuti variable-variable yang kita ingin gunakan 
+
+
+--ARROW FUNCTION--
+_> Arrow Function pertama kali diperkenalkan di PHP 7.4
+_> Secara garis besar, arrow function dan anonymouse function adalah dua hal yang sama
+_> Hal yang membedakan di arrow function adalah secara otomatis variable di luar Closure bisa digunakan, tidak seperti anonymouse function yang harus disebuatkan secara menual menggunakan kata kunci use
+_> Pembuatan arrow function tidak menggunakan kata kunci function, melainkan fn
+_> Arrow function di khusukan untuk pembuatan function yang sederhana
+
+
+--CALLBACK FUNCTION--
+_> Callback adalah sebuah mekanisme function memanggi function lainnya sesuai dengan yang diberikan di argument
+_> Hal ini sebenarnya sudah kita lakukan di materi Variable Function dan Anonymous Function
+_> Di PHP ada cara lain untuk implementasi callback, yaitu dengan tipe data callable
+_> Dan untuk memanggil callback function tersebut, kita bisa menggunakan function call_user_func(callable, arguments)
+
+
+--RECURSIVE FUNCTION--
+_> Recursive function adalah kemampuan function memanggil function dirinya sendiri
+_> Kadang memang ada banyak problem, yang lebih mudah diselesaikan menggunakan recursive function, seperti contohnya kasus factorial
+_> Problem Dengan Rekursive
+    * Walaupun recursive unction itu sangat menarik, namun ita perlu berhati-hati
+    * JIka recursive terlalu dalam, maka akan ada kemungkinan terjadi memory overflow, yaitu error dimana memory terlalu banyak di gunakan di PHP
+
+
+--KOMENTAR--
+_> Kadang dalam membuat program, kita sering menempatkan komentar di kode program tersebut
+_> Komentar adalah kode program yang akan di hiraukan saat kode program kita dijalankan
+_> Biasanya komentar digunakan untuk dokumentasi
+
+
+--STRING FUNCTION--
+_> Sebenarnya banyak sekali function bawaan PHP yang bisa kita gunakan untuk memanipulasi string
+_> https://www.php.net/manual/en/ref.strings.php
+_> Contoh String Function
+    | Function            | Keterangan                                                  |
+    -------------------------------------------------------------------------------------
+    | join() / implode()  | Menggabungkan array menjadi string                          |
+    | explode()           | Memecah string menjadi array                                |
+    | strtolower()        | Mengubah string menjadi lowercase                           |
+    | strtoupper()        | Mengubah string menjadi uppercase                           |
+    | substr()            | Mengabil sbagian string                                     |
+    | trim()              | Menghapus whitespace di depan dan belakang string           |
+    -------------------------------------------------------------------------------------
+
+
+--ARRAY FUNCTION--
+_> Di PHP terdapat banyak sekai function bawaan yang bisa kita gunakan untuk memanipulasi data array
+_> https://www.php.net/manual/en/ref.array.php
+_> Contoh Array Function
+    | Function            | Keterangan                                                  |
+    -------------------------------------------------------------------------------------
+    | array_keys()        | Mengabil semua keys milik array                             |
+    | array_values()      | Mengambil semua values milik array                          |
+    | array_map()         | Mengubah semua data array dengan callback                   |
+    | sort()              | Mengurutkan array                                           |
+    | rsort()             | Mengurutkan array terbalik                                  |
+    | shuffle()           | Mengubah posisi data di array secara random                 |
+    -------------------------------------------------------------------------------------
+
+
+--IS FUNCTION--
+_> PHP memiliki banyak sekali unction dengan prefix is_
+_> Function-function ini rata-rata deigunaakn untuk mengecek tipe data dari sebuah data
+_> https://www.php.net/manual/en/ref.var.php
+_> Contoh Is Function
+    | Function      | Keterangan                            |
+    ---------------------------------------------------------
+    | is_string()   | Apakah tipe data string               |
+    | is_bool()     | Apakah tipe data boolean              |
+    | is_int()      | Apakah tipe data int                  |
+    | is_float()    | Apakah tipe data float                |
+    | is_array()    | Apakah tipe data array                |
+    | is_callable() | Apakah tipe data callable             |
+    | is_numeric()  | Apakah tipe data numeric              |
+    ---------------------------------------------------------
+
+
+--REQUIRED DAN INCLUDE--
+_> Saat membuat aplikasi, ada baiknya tidak dibuat dalam satu flexsible
+_> Lebih baik dipisah ke beberapa file agar kode program tidak terlalu bertumpuk di satu file
+_> PHP memiliki function required dan include yang bisa kita gunakan untuk mengambil file php lain
+_> lantas apa bedanya required dan include?
+_> Pada required, jika file yang kita ambil tidak ada, maka akan terjadi error dan program berhenti
+_> Pada include, jika file yang kita ambil tidak ada, maka hanya memberi peringatan, namun program akan tetap dijalankan
+_> Posisi Required dan include
+    * Kode program PHP akan dibaca dari atas ke bawah, oleh karena itu pasrikan posisi required dan include sesuai dengan yang kita inginkan
+    * Misal jika sampai kita salah menempatkan posisi required dan include, bisa jadai kita malah memanggil function yang belum ada
+_> Function require_once dan include_one, function ini bisa mendeteksi jika kita Sebelumnya pernah mengambil file yang sama, maka tidak akan diambil lagi
+
+
+--VARIABLE SCOPE--
+_> Di PHP,kita bisa membuat variable dimanapun yang kita mau
+_> Scope variable adalah bagian mana saja sebuah variable bisa diakses
+_> PHP meiliki tiga jenis variable Scope
+    * Global Scope
+      ^ Variable yang dibuat diluar function memiliki scope global
+      ^ Variable di scope global hanya bisa diakses dari luar function
+      ^ Artinya di dalam function, kita tidak bisa mengaksesvariable di global scope
+      ^ Global Keyword
+        ~ Namun jika kita ingin mengakses variable diluar function (global scope) dari dalam function, kita bisa menggunakan kata kunci global
+        ~ Dengan menggunakan kata kunci global, maka kita bisa mengakses variable yang ada di global scope dari dalam function
+      ^ $GLOBAL Variable
+        ~ Selain menggunakan global keyword, setiap variable yang kita buat di global scope, secara otomatis akan di simpan di dalam array $GLOBAL oleh PHP
+        ~ Jadi kita bisa menggunakan $GLOBAL variable dengan key nama variable dari dalam function jika ingin mengakses global variable
+        ~ $GLOBAL adalah variable yang bersifat superglobal, artinya bisa diakses dari scope manapun
+    * Local Scope
+      ^ Variable yang dibuat di dalam function memiliki scope Global
+      ^ Variable di scope local hanya bisa diakses dari dalam function itu sendiri
+      ^ Artinya variable tersebut tidak bisa diakses dari luar function ataupun dari function lain
+    * Static Scope
+      ^ Secara default local variable itu siklus hidupnya hanya sebatas function nya dieksekusi
+      ^ Jika sebuah function selesai dieksekusi, maka siklus hidupnya local variable nya selesai
+      ^ PHP memiiki scope yang bernama Static
+      ^ Static scope hanya bisa di set ke local variable
+      ^ Saat kita membuat sebuah local variable menjadi static, maka siklus hidupnya tidak akan berhenti ketika sebuah function selesai dieksekusi
+      ^ Artinya jika function tersebut dieksekusi lagi, maka static variable tersebut akan memiliki value dari Sebelumnya
