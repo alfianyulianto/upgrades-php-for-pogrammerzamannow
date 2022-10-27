@@ -1,0 +1,251 @@
+--PENGENALAN OOP--
+_> Object Oriented Programming adalah sudut pandang bahasa pemograman yang berkonsep "objek"
+_> Ada banyak sudut pandang bahasa pemograman, namun OOP adalah yang sangat pupuler saat ini
+_> Ada beberapa istilah yang perlu dimengerti OOP, yaitu Object dan Class
+_> Apa itu Object?
+    * Object adalah data yang berisi field / propertis / attributes dan method / fungtion / behavior
+_> Apa itu Class?
+    * Class adalah blueprint, prototype atau cetakan untuk membuat Object
+    * Class berisikan deklarasi semua properties dan functions yang dimiliki oleh Object
+    * Setiap Object dibuat dari Class
+    * Dan sebuah Class bisa membuat Object tanpa batas
+
+
+--CLASS--
+_> Untuk membuat class, kita bisa menggunakan kata kunci class
+_> Penamaan calss biasanya bisa mengunakan format CamelCase
+_> Kode : Class
+    <?php
+      Class Person
+      {
+
+      }
+
+
+--OBJECT--
+_> Object adlah hasil instaniasi dari sebuah class
+_> Untuk membuat object kita bisa menggunakan kata kunci new, dan diikuti dengan nama Class dan kurung ()
+
+
+--PROPERTIES--
+_> Fields / Properties / Attributes adalah data yang bisa kita simpan di dalam Object
+_> Namun sebelum kita bisa memasukan data di fields, kita harus mendeklarasikan data apa aja yang di miliki object tersebut di dalam deklarasi class-nya
+_> Mamebuat field sama seperti membuat variable, namun ditempatkan di block class, namun diawali dengan kata kunci var
+_> Kode : Properties
+    class Person 
+    {
+      var $name;
+      var $address;
+      var $country;
+    }
+_> Memanipulasi Properties
+    * Fields yang ada di object, bisa kita Memanipulasi
+    * Untuk memanipulasi data field, sama seperti cara pada variable
+    * Untuk mengakses field, kita butuh kata kunci -> setelah nama object dan diikuti nama fields nya
+_> Kode : Manipulasi Properties
+    $person = new Person();
+    $person->name = "Alfian";
+    $person->address = "Solo";
+    $person->country = "Indonesia";
+
+    echo "Name : {$person->name}" . PHP_EOL;
+    echo "Name : {$person->address}" . PHP_EOL;
+    echo "Name : {$person->country}" . PHP_EOL;
+_> Properties Type Declaration
+    * Sama seperti di function, di properties pun kita bisa membuat type Declaration
+    * Ini membuat PHP otomatis mengecek tipe data yang sesuai dengan type declaration yang telah ditentukan
+    * Jika kita mencoba mengubah properties dengan type yang berbeda, maka otomatis akan error
+    * Ingat, bahwa PHP memiliki fitur type juggling, secara otomatis bisa mengkonversi ke tipe data lain
+    * Untuk menambahkan type declaration, kita bisa tambahkan setelah kata kunci var di properties
+_> Default Value Properties
+    * Sama seperti variable, di properties juga bisa langsung mengisi value nya
+    * Ini mirip seperti default value, jadi tidak diubah di object, maka peroperties akan memiliki value tersebut
+_> Nullable Properties
+    * Saat kita menambahkan type declaration di properties atau di function argument, maka secara otomatis kita tidak bisa mengirim data null ke dalam properties atau function argument tersebut
+    * Di PHP 7.4 dikenalkan type nullalbe, jadi kita bisa mengirimkan data null ke properties atau function arguments
+    * Caranya sbelum type declaration nya, kita bisa tambahkan tanda ?
+
+
+--FUNCTION--
+_> Selain menambahkan properties, kita juga bisa menambahkan function ke Object
+_> Caranya dengan mendeklarasikan function tersebut di dalam block class
+_> Sama sepertiproperti biasanya, kita juga bisa menambahkan return value dan peameter
+_> Untuk mengakses function tersebut, kita bisa menggunakan tanda -> dan diikuti dengan nama method nya. Sama seperti mengakses peroperties
+
+
+--THIS KEYWORDS--
+_> Saat ini membuat kode di dalam function di dalam class, kita bisa menggunakan kata kunci this untuk mengakses object saat ini
+_> Misal kadan kita butuh mengakses properties atau function lain di class yang sama 
+
+
+--CONSTANT--
+_> Properties di class bisa diubah, mirip seperti variable
+_> Di class juga membuat constant, datauang tidak bisa diubah
+_> Kita bisa menggunakan kata kunci define(), tapi sejak PHP 7.4 kita bisa menggunakan kata kunci const tanpa perlu menggunakan karakter $
+_> Secara default constant tidak bisa diubah valuenya maka constant akan melekat pada Class nya bukan pada Object
+_> Kode : Mengakses Conatant dengan Class
+    class Person
+    {
+      const AUTHOR = "AY-Blog";
+    }
+    Person::AUTHOR . PHP_EOL;
+
+
+--SELF KEYWORDS--
+_> Properties VS Constant
+    * Saat kita membuat object, properties yang terdapat di class akan secara otomatis dibuat per object, oleh karena itu untuk mengakses properties, kita perlu menggunakan object, atau jika dari dalam object tersebut sendiri, kita perlu menggunakan kata kunci this
+    * Sedangkan berbeda dengan constant, constant di class tidak akan dibuat per object. Constant itu hidpnya di class, bukan di object, oleh karena itu untuk mengaksesnya kita perlu menggunakan NamaClass::NAMA_CONSTANT
+    * Secara sedarhana, properties akan dibuat satu per instance clss (object), sedangkan constant di buat satu per class
+_> Self Keyword
+    * Jika di dalam class (misal di function) kita inign mengakses consatant, kita perlu mengakses menggunakan NamaClass::NAMA_CONSTANT
+    * Namun jika di dalam class yang sama, kita bisa menggunakan kata kunci self untuk memperumudah
+
+
+--CONSTRUCTOR--
+_> Saat kita membuat Object, maka kita seperti memanggil sebuah function, karena kita menggunakan kurung()
+_> Constructor adalah function yang akan dipanggil saat pertama kali Object dibuat
+_> Mirip seperti di function, kita bisa memberi parameter pada Constructor
+_> Nama constructor di PHP haruslah __construct()
+
+
+--DESTRUCTOR--
+_> Jika constructor adalah fucntion yang akan dipanggil ketika object dibuat
+_> Destructor adalah function yang akan dipanggil ketika object dihapus dari memory
+_> Biasnaya ketika object tersebut sudah tidak lagi digunakan, atau ketika aplikasi akan mati
+_> Untuk membuat function destructor, kita bisa menggunakan nama function __destruct()
+_> Khusus untuk destructor, kita tidak boleh menambahkan function argument
+_> Dalam penggunaan shari-hari, ini misal cocok untuk menutup koneksi ke database atau menutup proses menulis ke file, sehigga tidak terjadi memory leak
+
+
+--INHERITANCE--
+_> Inheritance atau pewarisan adalah kemampuan untuk menurukan sebuah class ke class lain
+_> Dalam artian, kita bisa membuat class Parent dan class Child
+_> Clas Child, bisa punya satu class Parent, namun sat classParent Bisa punya banyak class Child
+_> Saat sebuah class diturunkan, maka semua properties dan function yang ada di class Parent, secara otomatis akan dimiliki oleh class Child
+_> Untuk melakukan pewarisan, di class Child, kita harus menggunakan kata kunci extends lalu diikuti dengan nama class Parent nya
+
+
+--NAMESPACE--
+_> Saat kita membuat aplikasi, bisa dipastikan kita akan banyak sekali membuat class
+_> Jika class terlalu banyak, kadang akan menyulitkan kita untuk mencari ata mengklasifikasikan jenis-jenis class
+_> PHP memiliki fitur namespace, dimana kita bisa menyimpan class-class kita di dala namespace
+_> Namespace bisa nested, dan jika kita inign mengakses clas yang terdapat di namespace, kita perlu menyebutkan nama namespace nya
+_> Namespace bagus ketika kita punya beberapa class yangsama, dengan menggunakan namespace nama class sama tidak akan menjadikan error di PHP
+_> Membuat Namespace
+    * Untuk membuat namespace, kita bisa menggunakan kata kunci namespace
+    * JIka kita ingin membuat sub namespace. kita cukup gunakan karakter \ setelah namespace sebelumnya
+_> Kode : Membuat Object dari Namespace
+    $conflict1 = new \Data\One\Conflict();
+    $conflict2 = new \Data\Two\Conflict();
+_> Function dan Constant di Namespace
+    * Selain class, kita juga mengguanakan function dan constant di namespace
+    * Dan jika kita ingin menggunakan function atau constant tersebut, kita bisa menggunakan dengan diawali nama namespace nya
+_> Global Namespace
+    * Secara default saat kita membuat di PHP sebenarnya itu disimpan di global namespace
+    * Global namespace adalah namespace yang tidak memiliki nama namespace
+_> Kode : Global Namespace
+    namespace {
+      echo "Hello Global Namespace" . PHP_EOL;
+    }
+
+
+--IMPORT--
+_> use Keywords
+    * sebelumnya kita sudah tau bahwa untuk menggunakan class, function atau consatant di namespace kita perlu menyebutkan nama namespace nya di awal
+    * Jika teralu sering menggunakan class, function atau constant yang sama, maka terlalu banyak duplikasi dengan menyebut namespace yang sama berkali-kali
+    * Hal ini bisa kita hindari dengan cara mengimport calss, function atau constant tersebut dengan menggunakan kata kunci use
+    * Kode : use Keyword
+        use Data\One\Conflict;
+        use function Helper\helpMe;
+        use const Helper\APPLICATION
+_> Alias
+    * Saat kita menggunakan use, artinya kita tidak perlu lagi menggunakan nama namespace diawal class ketika ingin membuat class tersebut
+    * Namun bagaimana jika kita ternyata nama class nya sama?
+    * Untuk nya PHP memiliki fitur yang namanya Alias
+    * Alias adalah kemampuan membuat nama lain dari class, function atau constant yang ada
+    * Kita bisa menggunakan kata kunci as setelah melakukan use
+    * Kode : Alias
+        use Data\One\Conflict as Conflict1
+        use Data\Two\Conflict as conflict2
+        use function Hello\helpMe as help;
+        use const Helper\APPLICATION as APP;
+_> Group use Declaration
+    * Kadang ita butuh melakukan import banyak hal di satu namespace yang sama
+    * PHP memiliki fitur grup use, dimana kita banyak import beberapa calss, function atau constant dalam satu perintah use
+    * Untuk melakukan itu, kita bisa menggunakan kurung kurawal {}
+    * Kode : Group use Declaration
+        use Data\One\{Conflict as Conflict1, Sample as Sample1}
+        use Data\One\{Conflict, Sample}
+
+
+--VISIBILITY--
+_> Visibility / Access modifier adalah kemampuan properties, function dan constant dapat diakses dari mana saja
+_> Secara default properties, fucntion dan constant yang kita buat di dalam class bisa diakses dari mana saja, atau artinya dia adalah public
+_> Selain public, masih ada beberapa visibility lainnya
+_> Secara default kata kunci var untuk properties adalah sifatnya public
+_> Access Level
+    | Modifier    | Class     | Subclass    | World       |
+    -------------------------------------------------------
+    | public      | Y         | Y           | Y           |
+    | protected   | Y         | Y           | N           |
+    | private     | Y         | N           | N           |
+    -------------------------------------------------------
+
+
+--FUNCTION OVERRIDING--
+_> Function overriding adalah kemampuan mendklarasikan ulang function di child class, yang sudah ada di parent class
+_> Saat kita melakukan proses overriding tersebut, secara otomatis ketika kita membuat object dari class child, function yang di class parent tidak bisa diakses lagi
+
+
+--PARENT KEYWORDS--
+_> Kadang kita ingin mengakses function yang terdapat di class parent yang sudah terlanjut override di class child
+_> Untuk mengakses function milik class parent, kita bisa menggunakan kata kunci parent
+_> Sederhananya, parent digunakan untuk mengakses class parent
+
+
+--CONSTRUCTOR OVVERRIDING--
+_> Karena constuctor sama seperti function, maka constructor-pun bisa kita deklarasikan ulang di class Child nya
+_> Sebenarnya di PHP, kita bisa meng-override function dengan arguments yang berbeda, namun sangat tidak dianjurkan
+_> Jika kita melakukan override function dengan arguments berbeda, maka PHP akan menampilkan WARNING  
+_> Namun berbeda dengan constructor overriding, kita boleh meng-override dengan mengubah arguments nya, namun direkomendasikan untuk memanggil parent constructor
+
+
+--POLYMORPHISM--
+_> Polymorphism dalam bahasa Yunani berarti banyak bentuk
+_> Dalam OOPm Polymorphism adalah kemampuan sebuah object berubah bentuk menjadi bentuk lain
+_> Polymorphism erat hubungannya dengan Inheritance, jadi penggunaan Polymorphism bisa digunakan untuk kelas turunan dari class yang bersangkutan
+_> Function Argument Polymorphism
+    function sayHello(Programmer $programmer) 
+    {
+      echo "Hello $programmer->name" . PHP_EOL;
+    }
+
+    sayHello(new Programmer("Alfian"));
+    sayHello(new FrontendProgrammer("Budi"));
+    sayHello(new BeckendProgrammer("Indah"));
+
+
+--TYPE CHECK & CASTS--
+_> Sebelumnya kita sudah tahu cara melakuakn konversi tipe data bukan class
+_> Khusus untuk tipe data object, kita tidak perlu melakukan konversi secara eksplisit
+_> Namun agar aman, sebelum melakukan casts, pastikan kita nmelakukan type check (pengecekan tipe data), dengan menggunakn kata kunci instanceof
+_> hasil operator instanceof adalah boolean, true jjika tipe data sesuai, flase jika tipe tidak sesuai
+
+
+--ABSTRACT CLASS--
+_> Saat kita membuat class, kita bisa menjadi sebuah class sebagai abstract class
+_> Abstract class artinya, class tersebut tidak bisa dibuat sebagai object secara langsung, hanya bisa diturunkan
+_> Untuk membuat sebuah class menjadi abstract, kita bisa menggunakan kata kunci abstract sebelum kata kunci class
+_> Sehingga Abstract Class bisa kita gunakan sebagai kontrak child class
+
+
+--ABSTRACT FUNCTION--
+_> Saat kita membuat class yang abstract, kita bisa membuat abstract function juga di dalam class abstract tersebut
+_> Saat kita membuat sebuah abstract function, kita tidak boleh membbuat block function untuk function tersebut
+_> Artinya, abstract function wajib di override di class child
+_> Abstract function boleh memiliki access modifier private
+
+
+--GETTER&SETTER--
+_> Encapsulation
+  
